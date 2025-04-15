@@ -12,12 +12,14 @@ public class Tarakan implements Runnable {
     public void run() {
         int raceDistance = Store.getDistance();
 
-        while (Store.getWinner() == 0) {
+        while (true) {
             distance++;
             System.out.printf("Tarakan %d. --> %d\n", id, distance);
 
             if (distance == raceDistance) {
-                Store.setWinner(id);
+                if (Store.getWinner() == 0) {
+                    Store.setWinner(id);
+                }
                 return;
             }
 
